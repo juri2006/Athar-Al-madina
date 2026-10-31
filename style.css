@@ -1,0 +1,1308 @@
+/* ما يخلي مسافات بين الكلام والنجمه معناته جميع عناصر الصفحه */
+/* الاخير تخلينا نتحكم باحجام العناصر بشكل اسهل */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* الوان الصفحه الاساسيه */
+
+:root {
+    --green: #103f36;
+    --green-light: #176555;
+    --gold: #b99652;
+    --cream: #f8f6f0;
+    --text: #183c35;
+    --gray: #687773;
+}
+
+/* يخلي الانتقال بين الصفحات اسهل وانعم بدال ما ينتقل فجأه */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* السطر الثاني والثالث يعني استعمل اللون الي بالمتغير الي بين الاقواس  */
+/* السطر الاول نوع الخط
+السطر الثاني  لون الخلفيه 
+السطر الثالث لون النص الاساسي 
+يخلي اتجاه الصفحه عربي (من اليمين لليسار ) */
+
+body {
+    font-family: "Cairo", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    direction: rtl;
+}
+
+/* الاول يشيل الخط الي يجي تحت الرابط
+الثاني يخلي الرابط ياخذ نفس لون النص الموجود حوله*/
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =================  الي هو مسؤول عن الخط الي فوق بالموقعNAVBAR شريط التنقل   */
+/* الاول يعني ارتفاع الشريط 
+ الثاني لون الخلفيه اخضر
+الثالث لون الكتابه ابيض
+الرابع يخلي العناصر جنب بعض 
+الخامس يحط العناصر بالنص عموديا 
+السادس الصفر يعني المسافه فوق وتحت والسته المسافه يمين ويسار 
+السابع يعني المسافه بين العناصر 
+الثامن يخلي الشريط الي فوق يبقى ظاهر اذا نزلت
+التاسع يخليه ثابت باعلى الشاشه
+العاشر يخليه فوق العناصر الباقيه*/
+
+.navbar {
+    height: 72px;
+    background: #103f36;
+    color: white;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 6%;
+
+    gap: 30px;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+/* LOGO */
+/*الاول يخلي العناصر جنب بعض 
+ الثاني يخلي العناصر الي داخل الشعار فوق بعض 
+الرابع يخليني ادف الشعار الى جها معينه  */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    line-height: 1;
+
+    margin-right: 0;
+
+    min-width: 150px;
+}
+
+.logo-image {
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    flex-shrink: 0;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+/* يخلي اللوقه (اثر المدينه)حجمه 22 وخطه عريض  */
+
+.logo-ar {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+/* يتحكم باللوقو الي بالانجليزي ويخليه اصغر من العربي  */
+
+.logo-en {
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    opacity: .8;
+
+    margin-top: 5px;
+}
+
+
+/* NAV ذي القائمة الي فوق (الرئيسية-المعالم ...الخ) */
+/*الاول يخلي العناصر جنب بعض 
+الثاني يخلي العناصر بنص عمودي 
+الثالث المسافه بين الروابط  
+الرابع حم الخط 
+الخامس عرض الخط*/
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    margin-inline-end: auto;   /* الروابط بجانب الشعار، والباقي في الطرف الآخر */
+
+    gap: 32px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.nav-links a {
+    padding: 25px 0 20px;
+
+    border-bottom: 2px solid transparent;
+
+    transition: .3s;
+}
+
+/* hoverاذا حطيت الماوس على اختيار يطلع خط ذهبي تحت الكلمه 
+active  يعني الاختيار النشط حاليا ينحط تحتها خط ما يروح الا لو غيرتي  */
+
+.nav-links a:hover,
+.nav-links a.active {
+    border-color: #d4bd83;
+}
+
+
+/* ACCOUNT */
+/*قسم تسجيل الدخول وانشاء الحساب */
+
+.account {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-left: 0;
+
+    white-space: nowrap;
+
+    font-size: 12px;
+}
+
+/* زر انشاء الحساب  */
+/*   */
+
+.account-btn {
+    border: 1px solid #719a8e;
+
+    padding: 7px 17px;
+
+    border-radius: 25px;
+}
+
+.user {
+    font-size: 11px;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    height: 500px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(248,246,240,.98),
+            rgba(248,246,240,.75),
+            rgba(248,246,240,.15)
+        ),
+        url("images/خلفية.jpeg");
+
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 52%;
+
+    margin-right: 8%;
+}
+
+
+.small-title {
+    color: #a48343;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.hero h1 {
+    font-size: 58px;
+
+    line-height: 1.1;
+
+    color: #144f45;
+
+    font-weight: 800;
+
+    margin: 8px 0;
+}
+
+
+.hero h2 {
+    color: #254b43;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+
+.hero p {
+    color: #536660;
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    max-width: 600px;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 23px;
+}
+
+.main-btn,
+.second-btn {
+    padding: 10px 23px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.main-btn {
+    background: #144f45;
+
+    color: white;
+}
+
+.second-btn {
+    border: 1px solid #72867f;
+
+    color: #214d44;
+
+    background: rgba(255,255,255,.6);
+}
+
+
+/* ================= SEARCH ================= */
+
+.search-box {
+    position: absolute;
+
+    bottom: -28px;
+
+    right: 50%;
+
+    transform: translateX(50%);
+
+    width: min(690px, 80%);
+
+    height: 62px;
+
+    background: white;
+
+    border-radius: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(20,60,50,.18);
+
+    z-index: 10;
+}
+
+.search-icon {
+    width: 65px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 28px;
+
+    color: #174e45;
+
+    cursor: pointer;
+}
+
+.search-box input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding: 0 20px;
+
+    font-family: "Cairo";
+
+    font-size: 12px;
+
+    text-align: right;
+}
+
+.category {
+    min-width: 190px;
+
+    height: 44px;
+
+    margin-left: 9px;
+
+    padding: 0 17px;
+
+    border-radius: 25px;
+
+    background: #f4f7f3;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 11px;
+
+    color: #46655d;
+}
+
+
+/* ================= SECTION ================= */
+
+.section {
+    width: 86%;
+
+    max-width: 1180px;
+
+    margin: auto;
+
+    padding: 78px 0 50px;
+}
+
+.section-heading {
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    margin-bottom: 27px;
+}
+
+.section-heading span {
+    color: #a48343;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    color: #174e45;
+
+    font-size: 28px;
+
+    margin-top: 3px;
+}
+
+.line {
+    width: 90px;
+
+    height: 2px;
+
+    background: #b99652;
+
+    margin-bottom: 10px;
+}
+
+
+/* ================= CATEGORY ================= */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+.category-card {
+    height: 145px;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 12px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.religious {
+    background: linear-gradient(
+        135deg,
+        #dceae3,
+        #edf2e8
+    );
+}
+
+.historical {
+    background: linear-gradient(
+        135deg,
+        #dce8ef,
+        #ccd9df
+    );
+}
+
+.museums {
+    background: linear-gradient(
+        135deg,
+        #f0dfcb,
+        #f6eadb
+    );
+}
+
+.nature {
+    background: linear-gradient(
+        135deg,
+        #dceae0,
+        #e8eee2
+    );
+}
+
+.category-icon {
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.75);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 21px;
+
+    flex-shrink: 0;
+}
+
+.category-card h3 {
+    font-size: 16px;
+
+    margin-bottom: 3px;
+}
+
+.category-card p {
+    color: #687772;
+
+    font-size: 9px;
+}
+
+
+/* ================= PLACES ================= */
+
+.places {
+    padding-top: 35px;
+}
+
+.view-all {
+    border: 1px solid #9aaca5;
+
+    border-radius: 20px;
+
+    padding: 5px 15px;
+
+    color: #45665e;
+
+    font-size: 10px;
+}
+
+.places-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+.place-card {
+    background: white;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid #e4e4dc;
+
+    box-shadow:
+        0 5px 18px rgba(30,55,48,.06);
+}
+
+.place-image {
+    height: 174px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.place-image span {
+    font-size: 55px;
+
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(0,0,0,.25)
+        );
+}
+
+
+/* الصور */
+
+.mosque {
+    background:
+        linear-gradient(
+            rgba(10,70,55,.05),
+            rgba(10,70,55,.1)
+        ),
+        url("images/المسجد\ النبوي.jpeg")
+        center/cover;
+}
+
+.mountain {
+    background:
+        linear-gradient(
+            rgba(10,70,55,.05),
+            rgba(10,70,55,.1)
+        ),
+        url("images/جبل\ احد.png")
+        center/cover;
+}
+
+.quba {
+    background:
+        linear-gradient(
+            rgba(10,70,55,.05),
+            rgba(10,70,55,.1)
+        ),
+        url("images/مسجد\ قباء.png")
+        center/cover;
+}
+
+.museum {
+    background:
+        linear-gradient(
+            rgba(10,70,55,.05),
+            rgba(10,70,55,.1)
+        ),
+        url("images/متحف\ دار\ المدينة.jpeg")
+        center/cover;
+}
+
+
+/* محتوى البطاقة */
+
+.place-content {
+    padding: 15px 17px 17px;
+}
+
+.place-content h3 {
+    color: #194d44;
+
+    font-size: 16px;
+
+    margin-bottom: 4px;
+}
+
+.place-content p {
+    color: #687772;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    min-height: 36px;
+}
+
+.place-content small {
+    color: #55736c;
+
+    font-size: 9px;
+
+    display: block;
+
+    margin-top: 9px;
+}
+
+
+/* ================= PLANNER ================= */
+
+.planner {
+    width: 86%;
+
+    max-width: 1180px;
+
+    min-height: 135px;
+
+    margin: 10px auto;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(12,64,53,.97),
+            rgba(15,73,62,.82)
+        ),
+        url("images/خلفية.jpeg")
+        center/cover;
+
+    color: white;
+}
+
+.planner-content {
+    min-height: 135px;
+
+    padding: 23px 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 23px;
+}
+
+.planner-icon {
+    width: 70px;
+
+    height: 70px;
+
+    border: 2px solid rgba(255,255,255,.5);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 35px;
+}
+
+.planner-text h2 {
+    font-size: 23px;
+
+    margin-bottom: 3px;
+}
+
+.planner-text p {
+    color: #dce9e5;
+
+    font-size: 10px;
+
+    max-width: 600px;
+}
+
+.planner-button {
+    margin-right: auto;
+
+    border: 1px solid #7da799;
+
+    border-radius: 25px;
+
+    padding: 7px 22px;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+}
+
+
+
+/* ================= MAP ================= */
+
+.map-section {
+    padding-bottom: 60px;
+}
+
+
+/* الخريطة الحقيقية داخل الصفحة */
+
+#home-map {
+    width: 100%;
+
+    height: 380px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid #d5d9cd;
+
+    box-shadow:
+        0 8px 25px rgba(30,55,48,.08);
+
+    z-index: 1;
+}
+
+
+/* محتوى نافذة المعلم */
+
+.popup {
+    width: 250px;
+
+    text-align: right;
+
+    direction: rtl;
+}
+
+
+.popup img {
+    width: 100%;
+
+    height: 140px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    margin-bottom: 8px;
+}
+
+
+.popup h3 {
+    color: #194d44;
+
+    font-size: 17px;
+
+    margin: 5px 0;
+
+    font-weight: 800;
+}
+
+
+.popup .category {
+    color: #a48343;
+
+    background: transparent;
+
+    padding: 0;
+
+    margin: 0 0 7px;
+
+    min-width: 0;
+
+    height: auto;
+
+    font-size: 11px;
+}
+
+
+.popup p {
+    color: #687773;
+
+    font-size: 11px;
+
+    line-height: 1.8;
+
+    margin: 5px 0 10px;
+}
+
+
+.popup a {
+    display: inline-block;
+
+    background: #103f36;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+}
+
+
+.popup a:hover {
+    background: #176555;
+}
+
+
+/* أسفل الخريطة */
+
+.map-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    color: #687773;
+
+    font-size: 11px;
+}
+
+
+.map-bottom strong {
+    color: #194d44;
+
+    font-weight: 800;
+}
+
+
+.map-full-button {
+    border: 1px solid #9aaca5;
+
+    border-radius: 20px;
+
+    padding: 6px 15px;
+
+    color: #45665e;
+
+    font-size: 10px;
+
+    transition: .3s;
+}
+
+
+.map-full-button:hover {
+    background: #103f36;
+
+    color: white;
+
+    border-color: #103f36;
+}
+
+
+/* ================= MAP MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    #home-map {
+        height: 330px;
+
+        border-radius: 14px;
+    }
+
+
+    .map-bottom {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 10px;
+
+        text-align: center;
+    }
+
+
+    .map-full-button {
+        display: block;
+
+        text-align: center;
+    }
+
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    background: #103f36;
+
+    color: white;
+
+    padding: 42px 7%;
+
+    display: grid;
+
+    grid-template-columns:
+        1.6fr 1fr 1fr 1fr;
+
+    gap: 45px;
+}
+
+.footer-logo {
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+.footer p {
+    color: #b8ccc5;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+}
+
+.footer h4 {
+    font-size: 13px;
+
+    margin-bottom: 10px;
+}
+
+.footer a {
+    display: block;
+
+    color: #b8ccc5;
+
+    font-size: 10px;
+
+    margin: 5px 0;
+}
+
+.social {
+    display: flex;
+
+    gap: 9px;
+
+    margin-bottom: 12px;
+}
+
+.social span {
+    width: 28px;
+
+    height: 28px;
+
+    border: 1px solid #6d9187;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 11px;
+}
+
+.footer small {
+    color: #9eb8b0;
+
+    font-size: 8px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .logo {
+        margin-inline-end: auto;
+    }
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .hero-content {
+        width: 75%;
+
+        margin-right: 8%;
+    }
+
+    .category-grid,
+    .places-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero {
+        height: 600px;
+    }
+
+    .hero-content {
+        width: 86%;
+
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero h2 {
+        font-size: 18px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 200px;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    .category {
+        min-width: 140px;
+    }
+
+    .category-grid,
+    .places-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .planner {
+        width: 90%;
+    }
+
+    .planner-content {
+        flex-wrap: wrap;
+
+        padding: 20px;
+    }
+
+    .planner-button {
+        margin-right: 0;
+    }
+
+    .footer {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 25px;
+    }
+}
+/* ================= WELCOME PAGE ================= */
+
+.welcome-page {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(10, 55, 47, .65),
+            rgba(10, 55, 47, .65)
+        ),
+        url("images/خلفية.jpeg")
+        center/cover;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.welcome-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent,
+            rgba(0,0,0,.35)
+        );
+}
+
+.welcome-content {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    color: white;
+
+    width: 90%;
+
+    max-width: 700px;
+}
+
+.welcome-logo {
+    font-size: 55px;
+
+    font-weight: 800;
+
+    margin-bottom: 0;
+}
+
+.welcome-en {
+    font-family: Arial, sans-serif;
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
+
+    opacity: .8;
+
+    margin-bottom: 35px;
+}
+
+.welcome-content h1 {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+.welcome-content p {
+    font-size: 15px;
+
+    line-height: 2;
+
+    color: #e5eee9;
+
+    margin-bottom: 30px;
+}
+
+.welcome-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.welcome-login,
+.welcome-register {
+    padding: 12px 35px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: .3s;
+}
+
+.welcome-login {
+    background: #b99652;
+
+    color: white;
+}
+
+.welcome-register {
+    border: 1px solid rgba(255,255,255,.7);
+
+    color: white;
+
+    background: rgba(255,255,255,.1);
+}
+
+.welcome-login:hover,
+.welcome-register:hover {
+    transform: translateY(-3px);
+}
+
+.guest-link {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: #dce8e3;
+
+    font-size: 11px;
+
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+
+    .welcome-logo {
+        font-size: 24 px;
+    }
+
+    .welcome-content h1 {
+        font-size: 25px;
+    }
+
+    .welcome-content p {
+        font-size: 12px;
+    }
+
+    .welcome-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .welcome-login,
+    .welcome-register {
+        width: 220px;
+    }
+}
+
