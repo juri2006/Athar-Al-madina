@@ -31,4 +31,5 @@ if (!mysqli_real_connect(
 }
 
 mysqli_set_charset($conn, 'utf8mb4');
+@$conn->query("INSERT INTO site_visits () VALUES ()");
 ?>
