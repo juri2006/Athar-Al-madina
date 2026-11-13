@@ -1,66 +1,6 @@
 <?php
 session_start();
 require_once __DIR__ . "/lang.php";
-?>
-
-<!DOCTYPE html>
-<html lang="<?= htmlspecialchars($LANG) ?>" dir="<?= htmlspecialchars($LANG_DIR) ?>">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>أثر المدينة | اكتشف المدينة المنورة</title>
-
-    <!-- الخط -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <!-- ملف CSS -->
-    <link rel="stylesheet" href="style.css">
-    <?= lang_switcher_css() ?>
-    <style>
-        .navbar .lang-switcher { flex-wrap: nowrap; }
-        .navbar .lang-switcher a { padding: 3px 8px; font-size: 11px; white-space: nowrap; }
-    </style>
-</head>
-
-<body>
-
-<!-- ================= HEADER ================= -->
-
-<header class="navbar">
-
-    <div class="logo">
-        <img src="images/logo.jpeg" alt="أثر المدينة" class="logo-image">
-
-        <div class="logo-text">
-        <div class="logo-ar">أثَر المدينة</div>
-        <div class="logo-en">ATHAR AL-MADINA</div>
-</div>
-    </div>
-
-   <nav class="nav-links">
-
-        <a href="#" class="active"><?= htmlspecialchars(t('nav_home')) ?></a>
-
-        <a href="#places"><?= htmlspecialchars(t('nav_places')) ?></a>
-
-        <a href="visit_planner.php"><?= htmlspecialchars(t('nav_planner')) ?></a>
-
-        <a href="map.php"><?= htmlspecialchars(t('nav_map')) ?></a>
-
-        <a href="#about"><?= htmlspecialchars(t('nav_about')) ?></a>
-
-        <a href="add_place.php"><?= htmlspecialchars(t('nav_add')) ?></a>
-    </nav>
-
-<?php
-session_start();
-require_once __DIR__ . "/lang.php";
 
 /* ===== [جديد] جلب المعالم من قاعدة البيانات للخريطة ===== */
 include_once __DIR__ . "/database/db.php";
