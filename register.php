@@ -164,9 +164,8 @@ exit();
 
 } else {
 
-    $error = "حدث خطأ أثناء إنشاء الحساب.";
+    die("MySQL Error: " . mysqli_error($conn));
 
-    mysqli_stmt_close($stmt);
 }
  }
                 }
