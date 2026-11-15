@@ -1,10 +1,10 @@
 <?php
 
-$host = getenv('DB_HOST');
-$user = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$database = getenv('DB_NAME') ?: 'city';
-$port = (int)(getenv('DB_PORT') ?: 4000);
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
+$password = getenv('MYSQLPASSWORD');
+$database = getenv('MYSQLDATABASE');
+$port = (int)(getenv('MYSQLPORT') ?: 3306);
 
 /*
  * إذا لم توجد بيانات قاعدة البيانات
