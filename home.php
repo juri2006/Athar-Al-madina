@@ -54,6 +54,72 @@ if ($res) {
         .popup a.pbtn { display: inline-block; background: #103f36; color: #fff; text-decoration: none;
                         padding: 7px 11px; border-radius: 20px; font-size: 10px; }
     </style>
+
+    <!-- [جديد] تعديلات الترتيب + قائمة المعالم المنسدلة -->
+    <style>
+        /* أبرز المعالم صارت أول قسم بعد الهيرو، نعطيها مسافة عشان ما يغطيها مربع البحث */
+        .section.places { padding-top: 78px; }
+
+        /* عند الضغط على "المعالم" ينزل لقسم التصنيفات وما يختفي تحت الشريط العلوي */
+        #categories { scroll-margin-top: 80px; }
+
+        /* القائمة المنسدلة */
+        .nav-dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dd-arrow {
+            background: transparent;
+            border: none;
+            color: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 0 2px;
+            line-height: 1;
+            transition: transform .3s;
+        }
+
+        .nav-dropdown:hover .dd-arrow,
+        .nav-dropdown.open .dd-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            min-width: 190px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(20,60,50,.2);
+            padding: 8px 0;
+            z-index: 1100;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown.open .dropdown-menu {
+            display: block;
+        }
+
+        .nav-links .dropdown-menu a {
+            display: block;
+            padding: 10px 18px;
+            border: none;
+            color: #183c35;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .nav-links .dropdown-menu a:hover {
+            background: #f8f6f0;
+            color: #176555;
+        }
+    </style>
 </head>
 
 <body>
@@ -75,7 +141,18 @@ if ($res) {
 
         <a href="#" class="active"><?= htmlspecialchars(t('nav_home')) ?></a>
 
-        <a href="#places"><?= htmlspecialchars(t('nav_places')) ?></a>
+        <!-- [جديد] المعالم: ينزل لقسم التصنيفات + سهم يطلع أسماء التصنيفات -->
+        <div class="nav-dropdown" id="navDropdown">
+            <a href="#categories"><?= htmlspecialchars(t('nav_places')) ?></a>
+            <button type="button" class="dd-arrow" id="ddArrow" aria-label="التصنيفات">⌄</button>
+
+            <div class="dropdown-menu">
+                <a href="places/religious.php">معالم دينية</a>
+                <a href="places/historical.php">معالم تاريخية</a>
+                <a href="places/museums.php">متاحف وثقافة</a>
+                <a href="places/nature.php">أماكن طبيعية</a>
+            </div>
+        </div>
 
         <a href="visit_planner.php"><?= htmlspecialchars(t('nav_planner')) ?></a>
 
@@ -191,9 +268,155 @@ if ($res) {
 </section>
 
 
-<!-- ================= CATEGORIES ================= -->
+<!-- ================= PLACES (1) ================= -->
 
-<section class="section categories">
+<section class="section places" id="places">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span>
+                أماكن لا تفوّت زيارتها
+            </span>
+
+            <h2>
+                أبرز المعالم
+            </h2>
+
+        </div>
+
+        <a href="map.php" class="view-all">
+            عرض الكل على الخريطة ←
+        </a>
+
+    </div>
+
+
+    <div class="places-grid">
+
+
+        <!-- المسجد النبوي -->
+       <a href="places/details.php?id=1" class="place-card">
+            <div class="place-image mosque">
+                <span>🕌</span>
+            </div>
+            <div class="place-content">
+                <h3>المسجد النبوي</h3>
+                <p>أشرف بقاع الأرض وثاني الحرمين الشريفين ومثوى النبي صلى الله عليه وسلم.</p>
+                <small>📍 موقع مركزي في المدينة المنورة</small>
+            </div>
+        </a>
+
+
+        <!-- مسجد قباء -->
+        <a href="places/details.php?id=3" class="place-card">
+            <div class="place-image quba">
+                <span>🕌</span>
+            </div>
+            <div class="place-content">
+                <h3>مسجد قباء</h3>
+                <p>أول مسجد أسس على التقوى في الإسلام، وفضل الصلاة فيه كعمرة.</p>
+                <small>📍 جنوب المدينة المنورة</small>
+            </div>
+        </a>
+
+
+        <!-- جبل أحد -->
+        <a href="places/details.php?id=2" class="place-card">
+            <div class="place-image mountain">
+                <span>⛰️</span>
+            </div>
+            <div class="place-content">
+                <h3>جبل أحد</h3>
+                <p>الجبل الذي أحبه النبي صلى الله عليه وسلم ويشهد على تاريخ غزوة أحد العظيمة.</p>
+                <small>📍 شمال المدينة المنورة</small>
+            </div>
+        </a>
+
+
+        <!-- مقبرة البقيع -->
+        <a href="places/details.php?id=4" class="place-card">
+            <div class="place-image museum">
+                <span>🏛</span>
+            </div>
+            <div class="place-content">
+                <h3>مقبرة البقيع</h3>
+                <p>مضجع آل بيت النبي صلى الله عليه وسلم وجمع غفير من الصحابة الكرام.</p>
+                <small>📍 بجوار المسجد النبوي الشريف</small>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<!-- ================= PLANNER (2) ================= -->
+
+<section class="planner" id="planner">
+
+    <div class="planner-content">
+
+        <div class="planner-icon">
+            ⌖
+        </div>
+
+        <div class="planner-text">
+
+            <h2>
+                منظم الزيارة
+            </h2>
+
+            <p>
+                اختر الأماكن التي تود زيارتها،
+                وسنساعدك في إنشاء مسارك السياحي المثالي
+                مع عرضه على الخريطة.
+            </p>
+
+        </div>
+
+        <a href="visit_planner.php" >
+              منظم الزيارة
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAP (3) ================= -->
+
+<section class="section map-section" id="map">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span>
+                استكشف مواقع المعالم
+            </span>
+
+            <h2>
+                الخريطة
+            </h2>
+
+        </div>
+
+        <div class="line"></div>
+
+    </div>
+
+    <!-- [جديد] الخريطة الحقيقية بدل الخريطة الوهمية -->
+    <div id="home-map"></div>
+    <a href="map.php" class="view-all" style="display:inline-block; margin-top:12px;">
+        افتح الخريطة الكاملة ←
+    </a>
+
+</section>
+
+
+<!-- ================= CATEGORIES (4) ================= -->
+
+<section class="section categories" id="categories">
 
     <div class="section-heading">
 
@@ -309,152 +532,6 @@ if ($res) {
         </a>
 
     </div>
-
-</section>
-
-
-<!-- ================= PLACES ================= -->
-
-<section class="section places" id="places">
-
-    <div class="section-heading">
-
-        <div>
-
-            <span>
-                أماكن لا تفوّت زيارتها
-            </span>
-
-            <h2>
-                أبرز المعالم
-            </h2>
-
-        </div>
-
-        <a href="map.php" class="view-all">
-            عرض الكل على الخريطة ←
-        </a>
-
-    </div>
-
-
-    <div class="places-grid">
-
-
-        <!-- المسجد النبوي -->
-       <a href="places/details.php?id=1" class="place-card">
-            <div class="place-image mosque">
-                <span>🕌</span>
-            </div>
-            <div class="place-content">
-                <h3>المسجد النبوي</h3>
-                <p>أشرف بقاع الأرض وثاني الحرمين الشريفين ومثوى النبي صلى الله عليه وسلم.</p>
-                <small>📍 موقع مركزي في المدينة المنورة</small>
-            </div>
-        </a>
-
-
-        <!-- مسجد قباء -->
-        <a href="places/details.php?id=3" class="place-card">
-            <div class="place-image quba">
-                <span>🕌</span>
-            </div>
-            <div class="place-content">
-                <h3>مسجد قباء</h3>
-                <p>أول مسجد أسس على التقوى في الإسلام، وفضل الصلاة فيه كعمرة.</p>
-                <small>📍 جنوب المدينة المنورة</small>
-            </div>
-        </a>
-
-
-        <!-- جبل أحد -->
-        <a href="places/details.php?id=2" class="place-card">
-            <div class="place-image mountain">
-                <span>⛰️</span>
-            </div>
-            <div class="place-content">
-                <h3>جبل أحد</h3>
-                <p>الجبل الذي أحبه النبي صلى الله عليه وسلم ويشهد على تاريخ غزوة أحد العظيمة.</p>
-                <small>📍 شمال المدينة المنورة</small>
-            </div>
-        </a>
-
-
-        <!-- مقبرة البقيع -->
-        <a href="places/details.php?id=4" class="place-card">
-            <div class="place-image museum">
-                <span>🏛</span>
-            </div>
-            <div class="place-content">
-                <h3>مقبرة البقيع</h3>
-                <p>مضجع آل بيت النبي صلى الله عليه وسلم وجمع غفير من الصحابة الكرام.</p>
-                <small>📍 بجوار المسجد النبوي الشريف</small>
-            </div>
-        </a>
-
-    </div>
-</section>
-
-<!-- ================= PLANNER ================= -->
-
-<section class="planner" id="planner">
-
-    <div class="planner-content">
-
-        <div class="planner-icon">
-            ⌖
-        </div>
-
-        <div class="planner-text">
-
-            <h2>
-                منظم الزيارة
-            </h2>
-
-            <p>
-                اختر الأماكن التي تود زيارتها،
-                وسنساعدك في إنشاء مسارك السياحي المثالي
-                مع عرضه على الخريطة.
-            </p>
-
-        </div>
-
-        <a href="visit_planner.php" >
-              منظم الزيارة
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= MAP ================= -->
-
-<section class="section map-section" id="map">
-
-    <div class="section-heading">
-
-        <div>
-
-            <span>
-                استكشف مواقع المعالم
-            </span>
-
-            <h2>
-                الخريطة
-            </h2>
-
-        </div>
-
-        <div class="line"></div>
-
-    </div>
-
-    <!-- [جديد] الخريطة الحقيقية بدل الخريطة الوهمية -->
-    <div id="home-map"></div>
-    <a href="map.php" class="view-all" style="display:inline-block; margin-top:12px;">
-        افتح الخريطة الكاملة ←
-    </a>
 
 </section>
 
@@ -585,6 +662,26 @@ landmarks.forEach(p => {
 });
 
 if (markers.length) map.fitBounds(L.featureGroup(markers).getBounds().pad(0.15));
+</script>
+
+<!-- [جديد] سهم قائمة المعالم -->
+<script>
+(function () {
+    const dd  = document.getElementById('navDropdown');
+    const btn = document.getElementById('ddArrow');
+    if (!dd || !btn) return;
+
+    // الضغط على السهم يفتح/يقفل القائمة
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dd.classList.toggle('open');
+    });
+
+    // الضغط خارج القائمة يقفلها
+    document.addEventListener('click', function (e) {
+        if (!dd.contains(e.target)) dd.classList.remove('open');
+    });
+})();
 </script>
 
 <?php include __DIR__ . "/translate_widget.php"; ?>
