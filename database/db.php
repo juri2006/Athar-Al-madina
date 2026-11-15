@@ -17,16 +17,16 @@ if (!$host || !$user) {
 
 $conn = mysqli_init();
 
-mysqli_options($conn, MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
+mysqli_options($conn, MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, false);
 
-mysqli_ssl_set(
-    $conn,
-    null,
-    null,
-    '/etc/ssl/certs/ca-certificates.crt',
-    null,
-    null
-);
+// mysqli_ssl_set(
+//     $conn,
+//     null,
+//     null,
+//     '/etc/ssl/certs/ca-certificates.crt',
+//     null,
+//     null
+// );
 
 if (!mysqli_real_connect(
     $conn,
@@ -36,7 +36,7 @@ if (!mysqli_real_connect(
     $database,
     $port,
     null,
-    MYSQLI_CLIENT_SSL
+    0
 )) {
     $conn = null;
     return;
