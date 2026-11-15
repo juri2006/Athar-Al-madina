@@ -44,7 +44,7 @@ if (!mysqli_real_connect(
 
 mysqli_set_charset($conn, 'utf8mb4');
 
-if ($conn) {
-    @$conn->query("INSERT INTO site_visits () VALUES ()");
-}
+// if ($conn) {
+//     @$conn->query("INSERT INTO site_visits () VALUES ()");
+// }
 ?>
