@@ -152,11 +152,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (mysqli_stmt_execute($stmt)) {
 
-    mysqli_stmt_close($stmt);
+   
 
-    header("Location: login.php");
+   echo "تم الحفظ - User ID: " . mysqli_insert_id($conn);
+exit():
 
-    exit();
+    
 
 } else {
 
