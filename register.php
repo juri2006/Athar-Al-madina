@@ -150,13 +150,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $hashed_password
                     );
 
-                   if (mysqli_stmt_execute($stmt)) {
+if (mysqli_stmt_execute($stmt)) {
 
-    die("تم إنشاء الحساب بنجاح");
+    mysqli_stmt_close($stmt);
+
+    header("Location: login.php");
+
+    exit();
 
 } else {
 
-    die("خطأ SQL: " . mysqli_error($conn));
+    $error = "حدث خطأ أثناء إنشاء الحساب.";
+
+    mysqli_stmt_close($stmt);
 }
  }
                 }
