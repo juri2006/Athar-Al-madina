@@ -225,7 +225,7 @@ if ($res) {
 
         <div class="hero-buttons">
 
-            <a href="#places" class="main-btn">
+            <a href="#categories" class="main-btn">
                 استكشف المعالم ✧
             </a>
             
