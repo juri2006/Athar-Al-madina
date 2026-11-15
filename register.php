@@ -154,7 +154,10 @@ if (mysqli_stmt_execute($stmt)) {
 
    
 
-   echo "تم الحفظ - User ID: " . mysqli_insert_id($conn);
+mysqli_stmt_close($stmt);
+
+header("Location: login.php");
+
 exit();
 
     
